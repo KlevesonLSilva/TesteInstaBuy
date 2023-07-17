@@ -1,3 +1,13 @@
+
 .bcg{
     background-color: white !important; 
+}
+
+.staButton{
+    background-color: green;
+    border-radius: 50%;
+}
+
+.WbuttonCarousel {
+    width: 4% !important;
 }

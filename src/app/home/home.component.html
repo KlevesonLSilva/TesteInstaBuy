@@ -2,51 +2,136 @@
   <div id="carousel" class="carousel slide carousel-fade mb-5">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../../assets/img/bnr-f44a74622be442ea996949457a44b9b2.jpeg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/img/bnr-f457d7ea0f74483889a3ab0611893517.jpeg" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <!-- <div class="carousel-inner" *ngFor="let banner of banners">
-      <div class="carousel-item active">
         <img [src]="getBannerUrl(banners[0].image)" class="d-block w-100" alt="...">
       </div>
-        <div class="carousel-item">
+      <div class="carousel-item">
         <img [src]="getBannerUrl(banners[2].image)" class="d-block w-100" alt="...">
-      </div>  
-    </div> -->
+      </div>
+    </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <button class="carousel-control-next btn-secondary" type="button" data-bs-target="#carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon btn-secondary" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
 
-  <div class="row justify-content-center "> 
-    <mat-card class="card col-3 mb-5 me-5 bcg" *ngFor="let promo of promocao">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{promo.name}}</mat-card-title>
-         <mat-card-subtitle style="color:red" *ngFor="let priceObj of promo.prices">
-          <p>DE: R$:{{priceObj.price}} </p>
-           <p> POR R$:{{ priceObj.promo_price }}  </p> 
-        </mat-card-subtitle> 
-        <img mat-card-sm-image [src]="getImagemUrl(promo.images[0])" >
-      </mat-card-title-group>
-    </mat-card-header>
-    <!-- <mat-card-content>
-      {{promo.description}}
-    </mat-card-content> -->
-    <mat-card-actions>
-      <button mat-raised-button>LIKE</button>
-      <button mat-raised-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="row justify-content-center mb-5">
+    <h2>Promoção</h2>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let promoGroup of groupPromocoes; let i = index" [class.active]="i === 0">
+          <div class="row">
+            <div class="col-4" *ngFor="let promo of promoGroup">
+              <mat-card class="card bcg" (click)="adicionarAoCarrinho(promo)">
+                <mat-card-header>
+                  <mat-card-title>{{ promo.name }}</mat-card-title>
+                  <mat-card-subtitle style="color: red">
+                    <p>DE: R$ {{ promo.prices[0].price }}</p>
+                    <p>POR R$ {{ promo.prices[0].promo_price }}</p>
+                  </mat-card-subtitle>
+                  <img mat-card-sm-image [src]="getImagemUrl(promo.images[0])" alt="Imagem">
+                </mat-card-header>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="adicionarAoCarrinho(promo)">Adicionar ao Carrinho</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev WbuttonCarousel" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon staButton" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next WbuttonCarousel" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon staButton" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <ng-container *ngFor="let collection of collectionItems">
+      <h2>{{ collection.title }}</h2>
+      <mat-card class="card col-3 mb-5 me-5 bcg" *ngFor="let item of collection.items">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ item.name }}</mat-card-title>
+            <mat-card-subtitle style="color: red">
+              <p>DE: R$ {{ item.min_price_valid }}</p>
+              <p>POR R$ </p>
+            </mat-card-subtitle>
+            <img mat-card-sm-image [src]="getImagemUrl(item.images[0])">
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-raised-button>Adicionar ao Carrinho</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
 </div>
-  
-  
-</div>
+
+
+
+
+
+<!-- <h1>TESTE</h1>
+ <div class="container">
+  <div class="row justify-content-center">
+    <ng-container *ngFor="let groups of collectionItemsGroup"> 
+      <h2>{{ groups[0].title }}</h2>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" > 
+            <div class="row">
+              <div class="col-4" *ngFor="let item of groups[0].items; let i = index"> 
+                <mat-card class="card me-2 bcg" (click)="adicionarAoCarrinho(item)" >
+                  <mat-card-header>
+                    <mat-card-title-group>
+                      <mat-card-title>{{ item.name }}</mat-card-title>
+                      <mat-card-subtitle style="color: red">
+                        <p>DE: R$ {{ item.min_price_valid }}</p>
+                        <p>POR R$ </p>
+                      </mat-card-subtitle>
+                      <img mat-card-sm-image [src]="getImagemUrl(item.images[0])" >
+                    </mat-card-title-group>
+                  </mat-card-header>
+                  <mat-card-actions>
+                    <button mat-raised-button  mat-raised-button >Adicionar ao Carrinho</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="carousel-control-prev WbuttonCarousel" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon staButton" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next WbuttonCarousel" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon staButton" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        
+      </div>
+    </ng-container>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+

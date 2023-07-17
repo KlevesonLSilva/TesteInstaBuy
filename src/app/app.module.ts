@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
 
+
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -14,7 +16,8 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo:"home", pathMatch:'full'},
+  { path:'home', component: HomeComponent },
   
 ];
 
@@ -31,7 +34,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
