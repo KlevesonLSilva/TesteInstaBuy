@@ -1,0 +1,47 @@
+  <div class="container">
+    <mat-card class="example-card bcg mt-5" *ngIf="produtoCarregado">
+      <mat-card-header>
+        <div class="mat-card-image-container">
+          <ng-container *ngIf="produtoCarregado.images.length > 1; else singleImage">
+            <div id="imageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let image of produtoCarregado.images; let i = index" [class.active]="i === 0">
+                  <img [src]="getImagemUrl(image)" class="d-block w-200" alt="Imagem do produto">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon staButton" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon staButton" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+              </button>
+            </div>
+          </ng-container>
+          <ng-template #singleImage>
+            <img mat-card-md-image [src]="getImagemUrl(produtoCarregado.images[0])">
+          </ng-template>
+        </div>
+        <mat-card-title-group class="mat-card-title-group-left flex-column align-items-center justify-content-evenly">
+          <mat-card-title>{{ produtoCarregado.name }}</mat-card-title>
+          <mat-card-subtitle style="color:black"><h2>{{produtoCarregado.min_price_valid}}/<span>{{produtoCarregado.unit_type}}</span></h2></mat-card-subtitle>
+          <div>
+            <button mat-raised-button color="accent" (click)="decrement()">-</button>
+            <span class="me-5 ms-5">{{valor}}</span>
+            <button mat-raised-button color="accent" (click)="increment()">+</button>
+            <button mat-raised-button  color="accent" class="ms-5" >Adicionar</button>
+          </div>
+        </mat-card-title-group>
+      </mat-card-header>      
+      </mat-card>
+
+      <mat-card class="example-card bcg mt-2" *ngIf="produtoCarregado">
+        <mat-card-header>
+          <mat-card-title-group class="mat-card-title-group-left">
+            <mat-card-title >Descrição do Produto</mat-card-title>
+            <mat-card-subtitle style="color:black"><p [innerHTML]="produtoCarregado.description"></p></mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>      
+        </mat-card>
+  </div>

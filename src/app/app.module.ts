@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
+import { ProductScreenComponent } from './product-screen/product-screen.component';
 
 
 const routes: Routes = [
   
   { path: '', redirectTo:"home", pathMatch:'full'},
   { path:'home', component: HomeComponent },
+  {path:'p/:slug', component: ProductScreenComponent}
   
 ];
 
@@ -26,7 +28,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    ProductScreenComponent
   ],
   imports: [
     BrowserModule,

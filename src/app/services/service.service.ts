@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class ServiceService {
       subdomain: subdomain,
       slug: slug
     };
-    const headers = new HttpHeaders();
-    return this.http.get(url, { params, headers });
+    
+    return this.http.get(url, { params });
     
   }
 

@@ -42,7 +42,6 @@ export class HomeComponent {
       this.groupPromocoes = this.groupPromocoesPorTres(this.promocao);
       this.collectionItems = response.data.collection_items
        this.collectionItemsGroup = this.groupCollectionItemsPorTres(this.collectionItems); 
-       debugger
        
     });
     
@@ -53,10 +52,9 @@ export class HomeComponent {
     
     const subdomain = 'supermercado';
     const slug = item.slug;
-    debugger
     this.service.getItem(subdomain, slug).subscribe((response) => {
       console.log(response);
-      this.router.navigate(['/caminho-para-a-pagina']);
+      this.router.navigate(['/p',slug],{state: {produto:response}});
     });
   }
 
@@ -87,36 +85,25 @@ export class HomeComponent {
 
 
   
-  groupCollectionItemsPorTres(collectionItems: any[]): CollectionItems[][] {
-    const groups: CollectionItems[][] = [];
+  groupCollectionItemsPorTres(items: any[]): any[] {
+    const groups = [];
+    let currentGroup = [];
   
-    for (const item of collectionItems) {
-      const slug = item.slug;
-      const items = item.items;
+    for (let i = 0; i < items.length; i++) {
+      currentGroup.push(items[i]);
   
-      let slugGroups: CollectionItems[] = [];
-      let currentGroup: { id: string; images: string[]; item_type: string; main_subcategory: string; min_price_valid: string; name: string; }[] = [];
-  
-      for (let i = 0; i < items.length; i++) {
-        currentGroup.push(items[i]);
-  
-        if (currentGroup.length  % 3 === 0 || i === items.length - 1) {
-          slugGroups.push({
-            length: currentGroup.length,
-            id: slug,
-            slug: slug,
-            title: item.title,
-            items: currentGroup
-          });
-          currentGroup = [];
-        }
+      if (currentGroup.length === 3 || i === items.length - 1) {
+        groups.push({
+          length: currentGroup.length,
+          items: currentGroup
+        });
+        currentGroup = [];
       }
-  
-      groups.push(slugGroups);
     }
   
     return groups;
   }
+  
   
   
   
