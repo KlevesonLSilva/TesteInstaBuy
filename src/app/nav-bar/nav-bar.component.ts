@@ -12,7 +12,7 @@ export class NavBarComponent {
   
   
   
-
+  
   
   
   constructor( private service: ServiceService) { }

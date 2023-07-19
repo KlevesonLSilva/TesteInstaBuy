@@ -3,7 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 
 
@@ -38,6 +41,9 @@ const routes: Routes = [
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule
+    
+    
   
     
   ],
