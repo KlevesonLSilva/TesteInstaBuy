@@ -34,8 +34,8 @@
                 <mat-card-header>
                   <mat-card-title>{{ promo.name }} </mat-card-title>
                   <mat-card-subtitle style="color: red" class="d-flex">
-                    <p class="me-2 fs-4">R$ {{ promo.prices[0].price | number: '.2-2'}}</p>
-                    <p class="text-decoration-line-through" style="color:grey"> R$ {{ promo.prices[0].promo_price | number: '.2-2'}}</p>
+                    <p class="me-2 fs-4">R${{ promo.prices[0].promo_price | number: '.2-2'}}</p>
+                    <p class="text-decoration-line-through" style="color:grey">R${{ promo.prices[0].price | number: '.2-2'}} </p>
                   </mat-card-subtitle>
                   <img mat-card-sm-image [src]="getImagemUrl(promo.images[0])" alt="Imagem">
                 </mat-card-header>
@@ -65,8 +65,8 @@
         <mat-card-header>
           <mat-card-title>{{ promo.name }}</mat-card-title>
           <mat-card-subtitle style="color: red" class="d-flex">
-            <p class="me-2 fs-4">R$ {{ promo.prices[0].price }}</p>
-            <p class="text-decoration-line-through" style="color: grey">R$ {{ promo.prices[0].promo_price }}</p>
+            <p class="me-2 fs-4"> R$ {{ promo.prices[0].promo_price | number: '.2-2' }}</p>
+            <p class="text-decoration-line-through" style="color: grey">R$ {{ promo.prices[0].price | number: '.2-2' }}</p>
           </mat-card-subtitle>
           <img mat-card-sm-image [src]="getImagemUrl(promo.images[0])" alt="Imagem">
         </mat-card-header>
@@ -92,9 +92,9 @@
               <mat-card-header>
                 <mat-card-title>{{ item.name }}</mat-card-title>
                 <mat-card-subtitle style="color: red" class="d-flex">
-                  <p class="me-2 fs-4">R$ {{ item.prices[0].price | number:'.2-2' }}</p>
+                  <p class="me-2 fs-4"> R${{ (item.prices[0].promo_price ? item.prices[0].promo_price : item.prices[0].price) | number:'.2-2' }}</p>
                   <p *ngIf="item.prices[0].promo_price !== undefined" class="text-decoration-line-through" style="color: grey">
-                    R$ {{ item.prices[0].promo_price | number:'.2-2' }}
+                    R$ {{ item.prices[0].price | number:'.2-2' }} 
                   </p>
                 </mat-card-subtitle>
                 <img mat-card-sm-image [src]="getImagemUrl(item.images[0])" alt="Imagem">
@@ -118,9 +118,9 @@
                       <mat-card-title-group>
                         <mat-card-title>{{ item.name }}</mat-card-title>
                         <mat-card-subtitle style="color: red" class="d-flex">
-                          <p class="me-2 fs-4">R${{ item.prices[0].price | number:'.2-2' }}</p>
+                          <p class="me-2 fs-4"> R${{ (item.prices[0].promo_price ? item.prices[0].promo_price : item.prices[0].price) | number:'.2-2' }}</p>
                           <p *ngIf="item.prices[0].promo_price !== undefined" class="text-decoration-line-through"
-                            style="color:grey"> R${{ item.prices[0].promo_price | number:'.2-2' }} </p>
+                            style="color:grey"> R${{ item.prices[0].price | number:'.2-2' }} </p>
                         </mat-card-subtitle>
                         <img mat-card-sm-image [src]="getImagemUrl(item.images[0])">
                       </mat-card-title-group>
