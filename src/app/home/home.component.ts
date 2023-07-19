@@ -33,6 +33,10 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    this.getLayout();
+  }
+
+  getLayout(){
     this.service.getLayout('supermercado').subscribe((response) => {
       this.banners = response.data.banners;
       this.promocao = response.data.promo;
@@ -41,8 +45,6 @@ export class HomeComponent {
        this.collectionItemsGroup = this.groupCollectionItemsPorTres(this.collectionItems); 
        
     });
-    
-
   }
 
   adicionarAoCarrinho(item: any) {

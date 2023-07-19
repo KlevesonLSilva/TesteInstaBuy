@@ -17,25 +17,25 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+  <i class="fas fa-cart-arrow-down"></i>
   <div class="row justify-content-center mb-5">
-    <h2>Promoção</h2>
+    <h2>Promoção</h2> 
     <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let promoGroup of groupPromocoes; let i = index" [class.active]="i === 0">
           <div class="row">
             <div class="col-4" *ngFor="let promo of promoGroup">
-              <mat-card class="card bcg" (click)="adicionarAoCarrinho(promo)">
+              <mat-card class="card col-12 mb-5 me-5 bcg " (click)="adicionarAoCarrinho(promo)">
                 <mat-card-header>
-                  <mat-card-title>{{ promo.name }}</mat-card-title>
-                  <mat-card-subtitle style="color: red">
-                    <p>DE: R$ {{ promo.prices[0].price }}</p>
-                    <p>POR R$ {{ promo.prices[0].promo_price }}</p>
+                  <mat-card-title>{{ promo.name }} </mat-card-title>
+                  <mat-card-subtitle style="color: red"class="d-flex">
+                    <p class="me-2 fs-4">R$ {{ promo.prices[0].price }}</p>
+                    <p class="text-decoration-line-through" style="color:grey"> R$ {{ promo.prices[0].promo_price }}</p>
                   </mat-card-subtitle>
                   <img mat-card-sm-image [src]="getImagemUrl(promo.images[0])" alt="Imagem">
                 </mat-card-header>
-                <mat-card-actions>
-                  <button mat-raised-button (click)="adicionarAoCarrinho(promo)">Adicionar ao Carrinho</button>
+                <mat-card-actions class="d-flex justify-content-center" >
+                  <button class="btn btn-success" (click)="adicionarAoCarrinho(promo)">Adicionar ao Carrinho</button>
                 </mat-card-actions>
               </mat-card>
             </div>
@@ -60,19 +60,19 @@
           <div class="carousel-item" *ngFor="let itemGroup of groupCollectionItemsPorTres(collection.items); let i = index" [class.active]="i === 0">
             <div class="row">
               <div class="col-4" *ngFor="let item of itemGroup.items">
-                <mat-card class="card col-12 mb-5 me-5 bcg">
+                <mat-card class="card col-12 mb-5 me-5 bcg" (click)="adicionarAoCarrinho(item)">
                   <mat-card-header class="justify-content-center">
                     <mat-card-title-group>
                       <mat-card-title>{{ item.name }}</mat-card-title>
-                      <mat-card-subtitle style="color: red">
-                        <p>DE: R$ {{ item.min_price_valid }}</p>
-                        <p>POR R$ </p>
+                      <mat-card-subtitle style="color: red" class="d-flex">
+                        <p class="me-2 fs-4">R${{ item.prices[0].price | number:'.2-2' }}</p>
+                        <p *ngIf="item.prices[0].promo_price !== undefined" class="text-decoration-line-through" style="color:grey"> R${{ item.prices[0].promo_price | number:'.2-2' }} </p>
                       </mat-card-subtitle>
                       <img mat-card-sm-image [src]="getImagemUrl(item.images[0])">
                     </mat-card-title-group>
                   </mat-card-header>
-                  <mat-card-actions>
-                    <button mat-raised-button>Adicionar ao Carrinho</button>
+                  <mat-card-actions class="d-flex justify-content-center">
+                    <button class="btn btn-success" (click)="adicionarAoCarrinho(item)">Adicionar ao Carrinho</button>
                   </mat-card-actions>
                 </mat-card>
               </div>

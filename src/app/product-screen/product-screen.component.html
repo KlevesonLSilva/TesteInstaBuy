@@ -27,10 +27,10 @@
           <mat-card-title>{{ produtoCarregado.name }}</mat-card-title>
           <mat-card-subtitle style="color:black"><h2>{{produtoCarregado.min_price_valid}}/<span>{{produtoCarregado.unit_type}}</span></h2></mat-card-subtitle>
           <div>
-            <button mat-raised-button color="accent" class="staButton" (click)="decrement()">-</button>
+            <button  class="btn btn-success" (click)="decrement()">-</button>
             <span class="me-5 ms-5">{{valor}}</span>
-            <button mat-raised-button color="accent" class="staButton" (click)="increment()">+</button>
-            <button mat-raised-button  color="accent" class="ms-5 staButton" >Adicionar</button>
+            <button   class="btn btn-success " (click)="increment()">+</button>
+            <button  type="button" class="btn btn-success ms-5" >Adicionar</button>
           </div>
         </mat-card-title-group>
       </mat-card-header>      
