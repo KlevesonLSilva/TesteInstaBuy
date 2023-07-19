@@ -22,6 +22,9 @@ export class HomeComponent {
   groupPromocoes: Promocao[][] = [];
   collectionItems: CollectionItems[]=[];
   collectionItemsGroup: CollectionItems[][]=[];
+  exibirTodosPromo = false;
+  exibirTodosProdutos = false;
+
   
   
 
@@ -111,7 +114,14 @@ export class HomeComponent {
       }
     }
   }
+
+  ExibirTodosPromo() {
+    this.exibirTodosPromo = !this.exibirTodosPromo;
+  }
   
+  ExibirTodosProdutos(collection: CollectionItems) {
+    collection.ExibirTodosProdutos = !collection.ExibirTodosProdutos;
+  }
   
 }
  
