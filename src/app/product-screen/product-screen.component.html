@@ -25,7 +25,10 @@
         </div>
         <mat-card-title-group class="mat-card-title-group-left flex-column align-items-center justify-content-evenly">
           <mat-card-title>{{ produtoCarregado.name }}</mat-card-title>
-          <mat-card-subtitle style="color:black"><h2>{{produtoCarregado.min_price_valid}}/<span>{{produtoCarregado.unit_type}}</span></h2></mat-card-subtitle>
+          <mat-card-subtitle style="color: red" class="d-flex mt-5">
+            <p class="fs-2" >R${{(produtoCarregado.prices[0].promo_price ? produtoCarregado.prices[0].promo_price : produtoCarregado.prices[0].price ) | number: '.2-2'}}<span class="fs-6">/{{produtoCarregado.unit_type}}</span></p>
+            <p class="text-decoration-line-through ms-3" style="color:grey" *ngIf="produtoCarregado.prices[0].promo_price"> R$ {{(produtoCarregado.prices[0].price ) | number: '.2-2'}}</p>
+          </mat-card-subtitle>
           <div>
             <button  class="btn btn-success" (click)="decrement()">-</button>
             <span class="me-5 ms-5">{{valor}}</span>
