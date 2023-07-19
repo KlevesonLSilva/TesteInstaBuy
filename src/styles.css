@@ -11,3 +11,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: green;
     border-radius: 50%;
 }
+ .card{
+    height: 270px;
+} 

@@ -14,7 +14,7 @@
                 <span class="visually-hidden">Anterior</span>
               </button>
               <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon staButton" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon staButton"  aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
               </button>
             </div>
@@ -27,10 +27,10 @@
           <mat-card-title>{{ produtoCarregado.name }}</mat-card-title>
           <mat-card-subtitle style="color:black"><h2>{{produtoCarregado.min_price_valid}}/<span>{{produtoCarregado.unit_type}}</span></h2></mat-card-subtitle>
           <div>
-            <button mat-raised-button color="accent" (click)="decrement()">-</button>
+            <button mat-raised-button color="accent" class="staButton" (click)="decrement()">-</button>
             <span class="me-5 ms-5">{{valor}}</span>
-            <button mat-raised-button color="accent" (click)="increment()">+</button>
-            <button mat-raised-button  color="accent" class="ms-5" >Adicionar</button>
+            <button mat-raised-button color="accent" class="staButton" (click)="increment()">+</button>
+            <button mat-raised-button  color="accent" class="ms-5 staButton" >Adicionar</button>
           </div>
         </mat-card-title-group>
       </mat-card-header>      

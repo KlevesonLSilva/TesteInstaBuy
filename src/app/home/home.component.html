@@ -53,8 +53,8 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <ng-container *ngFor="let collection of collectionItems">
-      <h2>{{ collection.title }}</h2>
+    <ng-container *ngFor="let collection of collectionItems" >
+      <h2 id="collection-{{collection.title}}" >{{ collection.title }}</h2>
       <div id="carousel{{ collection.id }}" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item" *ngFor="let itemGroup of groupCollectionItemsPorTres(collection.items); let i = index" [class.active]="i === 0">

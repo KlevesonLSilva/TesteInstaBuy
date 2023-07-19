@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServiceService } from '../services/service.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../interface/Prouct';
 
@@ -13,7 +14,7 @@ export class ProductScreenComponent {
   valor =0;
   
 
-   constructor(private route: ActivatedRoute) { 
+   constructor(private service: ServiceService, private route: ActivatedRoute) { 
   
    }
    ngOnInit(): void {
@@ -21,8 +22,11 @@ export class ProductScreenComponent {
   }
 
   getImagemUrl(imagem: string): string {
-    return 'https://assets.instabuy.com.br/ib.item.image.medium/m-' + imagem;
+    return this.service.getImagemUrl(imagem);
+    
   }
+
+  
   
   decrement() {
     if (this.valor > 0) {
