@@ -76,7 +76,7 @@ export class HomeComponent {
     promocoes.forEach((promocao, index) => {
       currentGroup.push(promocao);
 
-      if ((index + 1) % 3 === 0 || index === promocoes.length - 1) {
+      if ((index + 1) % 4 === 0 || index === promocoes.length - 1) {
         groups.push(currentGroup);
         currentGroup = [];
       }
@@ -93,7 +93,7 @@ export class HomeComponent {
     for (let i = 0; i < items.length; i++) {
       currentGroup.push(items[i]);
   
-      if (currentGroup.length === 3 || i === items.length - 1) {
+      if (currentGroup.length === 4 || i === items.length - 1) {
         groups.push({
           length: currentGroup.length,
           items: currentGroup

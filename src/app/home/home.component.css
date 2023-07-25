@@ -11,3 +11,17 @@
 .WbuttonCarousel {
     width: 4% !important;
 }
+
+.img {
+    width: 50%;
+     align-self: center;
+}
+
+.f-red{
+    color: red;
+}
+
+.f-grey{
+    color:grey
+}
+
